@@ -5,7 +5,7 @@ import java.io.File;
 public class FileService {
 
   public boolean checkFileExistsHardcoded(String folder, String filename) {
-    String path = folder + "/" + filename;
+    String path = folder + "\\" + filename;
     File file = new File(path);
     return file.exists();
   }
