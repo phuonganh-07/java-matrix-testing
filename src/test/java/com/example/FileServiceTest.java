@@ -1,5 +1,7 @@
+package com.example;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.File;
 import java.io.IOException;
 
@@ -9,15 +11,13 @@ public class FileServiceTest {
   void testFilePathMatrix() throws IOException {
     FileService service = new FileService();
     String tempDir = System.getProperty("java.io.tmpdir");
-    String fileName = "test_matrix.txt";
+    String fileName = "test_matrix_bug.txt";
 
     File tempFile = new File(tempDir, fileName);
     tempFile.createNewFile();
 
-    String manualPath = tempDir + "\\" + fileName;
-    System.out.println("Checking path: " + manualPath);
-
-    assert service.checkFileExistsHardcoded(tempDir, fileName) : "Failed on non-compatible OS!";
+    assertTrue(service.checkFileExistsHardcoded(tempDir, fileName),
+        "Loi! Khong tim thay file do sai dinh dang duong dan tren OS nay.");
 
     tempFile.delete();
   }
