@@ -11,13 +11,12 @@ public class FileServiceTest {
   void testFilePathMatrix() throws IOException {
     FileService service = new FileService();
     String tempDir = System.getProperty("java.io.tmpdir");
-    String fileName = "test_matrix_bug.txt";
+    String fileName = "test_matrix_safe.txt";
 
     File tempFile = new File(tempDir, fileName);
     tempFile.createNewFile();
 
-    assertTrue(service.checkFileExistsHardcoded(tempDir, fileName),
-        "Loi! Khong tim thay file do sai dinh dang duong dan tren OS nay.");
+    assertTrue(service.checkFileExistsSafe(tempDir, fileName));
 
     tempFile.delete();
   }

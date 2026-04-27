@@ -1,14 +1,13 @@
 package com.example;
 
-import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class FileService {
-
-  public boolean checkFileExistsHardcoded(String folder, String filename) {
-    String path = folder + "\\" + filename;
-    System.out.println("Checking path: " + path);
-    File file = new File(path);
-    return file.exists();
+  public boolean checkFileExistsSafe(String folder, String filename) {
+    Path path = Paths.get(folder, filename);
+    System.out.println("Checking safe path: " + path.toString());
+    return path.toFile().exists();
   }
 
   public static void main(String[] args) {
